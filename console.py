@@ -19,7 +19,11 @@ book_repository.save(book1)
 
 book2 = Book("The Lord of the Rings", "Fantasy", "Harper Collins", author2)
 book_repository.save(book2)
+
 book3 = Book("The Hobbit", "Fantasy", "Harper Collins", author2)
 book_repository.save(book3)
+
+book4 = Book("Silmarillion", "Fantasy", "Christopher Tolkien", author2)
+book_repository.save(book4)
 
 pdb.set_trace()

@@ -52,10 +52,24 @@ def create_book():
 # ----- ADVANCED EXTENSIONS -----
 
 # EDIT
-
+@books_blueprint.route("/books/<id>/edit", methods=["GET"])
+def edit_book(id):
+    book = book_repository.select(id)
+    authors = author_repository.select_all()
+    return render_template("/books/edit.html", book=book, authors=authors)
 
 # UPDATE
+@books_blueprint.route("/books/<id>", methods=["POST"])
+def update_book(id):
+    author_id = request.form['author_id'] 
+    title = request.form['title']
+    genre = request.form['genre']
+    publisher = request.form['publisher']
 
+    author = author_repository.select(author_id)
+    book = Book(title, genre, publisher, author, id)
+    book_repository.update(book)
+    return redirect("/books")
 
 
 
